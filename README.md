@@ -13,6 +13,20 @@ To run AutoDistortion on an image, download one of the [releases](https://github
 
 Only PNG and JPG images are supported so far.
 
+## How it works
+
+AutoDistortion works by randomly generating two functions, X(x, y) and Y(x, y), for example:
+
+```
+X(x, y) = 2x + 3y
+Y(x, y) = sin(7y)
+```
+
+Then, the color of the pixel at (x, y) in the output image will be the color of the pixel at (X(x, y) modulo width, Y(x, y) modulo height) in the input image (where width and height are the dimensions of the input image).
+
+To make sure that images at different resolutions are treated the same, AutoDistortion divides x and y by the width and height of the image respectively before doing this.
+
+
 ## Building AutoDistortion from source
 
 To build AutoDistortion, simply run
