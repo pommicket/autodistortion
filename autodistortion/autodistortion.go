@@ -29,13 +29,13 @@ func mod(a int, b int) int {
     return ((a % b) + b) % b
 }
 
-type workInfo struct {
+type WorkInfo struct {
     img image.Image
     xfunction autoutils.Function
     yfunction autoutils.Function
 }
 
-func DistortRows(info *workInfo, out [][]color.RGBA, yFrom int, yTo int,
+func DistortRows(info *WorkInfo, out [][]color.RGBA, yFrom int, yTo int,
                  done chan struct{}) {
 
     minX := info.img.Bounds().Min.X
