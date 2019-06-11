@@ -83,7 +83,7 @@ func Distort(img image.Image, functionLen int, nThreads int) image.Image {
         return rgba
     }
 
-    info := workInfo{img, xfunction, yfunction}
+    info := WorkInfo{img, xfunction, yfunction}
 
     // Make a slice of pixels (image.RGBA.Set isn't thread safe ): )
     pixels := make([][]color.RGBA, height)
