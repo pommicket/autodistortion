@@ -30,18 +30,18 @@ func mod(a int, b int) int {
 }
 
 type WorkInfo struct {
-    img image.Image
-    xfunction autoutils.Function
-    yfunction autoutils.Function
+    Img image.Image
+    Xfunction autoutils.Function
+    Yfunction autoutils.Function
 }
 
 func DistortRows(info *WorkInfo, out [][]color.RGBA, yFrom int, yTo int,
                  done chan struct{}) {
 
-    minX := info.img.Bounds().Min.X
-    maxX := info.img.Bounds().Max.X
-    minY := info.img.Bounds().Min.Y
-    maxY := info.img.Bounds().Max.Y
+    minX := info.Img.Bounds().Min.X
+    maxX := info.Img.Bounds().Max.X
+    minY := info.Img.Bounds().Min.Y
+    maxY := info.Img.Bounds().Max.Y
     width := maxX - minX
     height := maxY - minY
     fwidth := float64(width)
@@ -52,9 +52,9 @@ func DistortRows(info *WorkInfo, out [][]color.RGBA, yFrom int, yTo int,
         xy[1] = (float64(y) - float64(minY)) / fheight
         for x := 0; x < width; x++ {
             xy[0] = float64(x) / fwidth
-            srcX := mod(int(info.xfunction.Evaluate(xy) * fwidth),  width)  + minX
-            srcY := mod(int(info.yfunction.Evaluate(xy) * fheight), height) + minY
-            r, g, b, a := info.img.At(int(srcX), int(srcY)).RGBA()
+            srcX := mod(int(info.Xfunction.Evaluate(xy) * fwidth),  width)  + minX
+            srcY := mod(int(info.Yfunction.Evaluate(xy) * fheight), height) + minY
+            r, g, b, a := info.Img.At(int(srcX), int(srcY)).RGBA()
             out[y][x] = color.RGBA{uint8(r >> 8), uint8(g >> 8), uint8(b >> 8),
                                    uint8(a >> 8)}
         }
