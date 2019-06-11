@@ -3,6 +3,8 @@
 
 Distortion of images using randomly-generated functions.
 
+There is now a [web version](https://pommicket.com/autodistortion) of AutoDistortion (but it's slower).
+
 ![A world map distorted using AutoDistortion](worldmap_distorted.jpg)
 
 This was generated using AutoDistortion from the following image ([Sourced from here](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/OrteliusWorldMap1570.jpg/1280px-OrteliusWorldMap1570.jpg))
